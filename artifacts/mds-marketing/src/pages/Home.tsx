@@ -694,7 +694,7 @@ function ContactForm({ onConverted }: { onConverted: () => void }) {
         <div className="mb-8 pb-6 border-b border-black/6">
           <p className="text-[10px] tracking-[0.25em] text-[#C8922A] font-bold uppercase mb-1.5">Session stratégique gratuite</p>
           <h3 className="text-xl md:text-2xl font-black text-black leading-tight">
-            Réservez votre appel <span className="text-gradient-gold">en 60 secondes</span>
+            Réservez votre appel <span className="text-gradient-gold">en 15 secondes</span>
           </h3>
         </div>
 
