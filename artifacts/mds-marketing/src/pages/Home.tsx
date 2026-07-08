@@ -553,8 +553,8 @@ export default function Home() {
                   variants={{ hidden: { y: '100%' }, visible: { y: 0, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } } }}
                   className="text-4xl md:text-7xl font-black text-black leading-[0.9] mb-4 md:mb-6"
                 >
-                  STOP D'ATTENDRE. <br />
-                  <span className="text-gradient-gold">PASSEZ À L'ACTION.</span>
+                  DEVIENS LA RÉFÉRENCE <br />
+                  <span className="text-gradient-gold">DANS TON DOMAINE.</span>
                 </motion.h2>
               </div>
               <motion.p variants={FADE_UP} className="text-base md:text-lg text-black/60 max-w-xl mx-auto">
@@ -568,7 +568,7 @@ export default function Home() {
               </motion.div>
               <motion.div variants={FADE_UP} className="lg:col-span-2 space-y-6 pt-2">
                 {[
-                  { title: '15 minutes. C\'est tout.', desc: 'Un appel direct, sans détour. On identifie vos opportunités immédiates et on trace le plan.' },
+                  { title: 'Un appel direct, sans détour.', desc: 'On identifie vos opportunités immédiates et on trace le plan ensemble.' },
                   { title: 'Résultats concrets dès le lendemain', desc: "Vous repartez avec des actions précises à exécuter — pas des PowerPoints vides." },
                   { title: 'Zéro engagement, 100% valeur', desc: "On livre de la valeur avant même de travailler ensemble. Si on n'est pas le bon fit, on vous le dit." },
                 ].map((item, i) => (
