@@ -568,10 +568,10 @@ export default function Home() {
 
             {/* ── Bullets row ── */}
             <motion.div variants={FADE_UP} className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 md:mb-12">
-              {[
-                { title: 'Un appel direct, sans détour.', desc: 'On identifie vos opportunités immédiates et on trace le plan ensemble.' },
-                { title: 'Résultats concrets dès le lendemain', desc: 'Vous repartez avec des actions précises à exécuter — pas des PowerPoints vides.' },
-                { title: 'Zéro engagement, 100% valeur', desc: "On livre de la valeur avant même de travailler ensemble. Si on n'est pas le bon fit, on vous le dit." },
+              [
+                { title: 'Diagnostic sans détour.', desc: "On analyse votre situation réelle en 15 minutes et on identifie précisément où se cachent vos opportunités de croissance." },
+                { title: 'Un plan d\'action, pas un PowerPoint.', desc: "Vous repartez avec des actions concrètes à exécuter dès le lendemain — pas des recommandations vagues." },
+                { title: 'L\'honnêteté avant tout.', desc: "Si votre entreprise n'est pas le bon profil pour nos services, on vous le dit clairement. Pas de vente à tout prix." },
               ].map((item, i) => (
                 <div key={i} className="flex gap-3">
                   <CheckCircle2 className="text-primary w-5 h-5 mt-0.5 shrink-0" />
