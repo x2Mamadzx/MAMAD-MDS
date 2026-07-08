@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, BarChart3, Target, Zap, TrendingUp, Play, Camera, Users, Search, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, BarChart3, Target, Zap, TrendingUp, Play, Camera, Users, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import heroImage from '@assets/generated_images/hero-boardroom.jpg';
@@ -21,35 +21,26 @@ export default function Home() {
     <div className="w-full">
       <div className="noise-bg" />
 
-      {/* 1. HERO SECTION */}
+      {/* 1. HERO */}
       <section className="relative min-h-[100dvh] flex items-center justify-center pt-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img src={heroImage} alt="Boardroom" className="w-full h-full object-cover opacity-30" />
           <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(200,146,42,0.1)_0%,rgba(10,10,10,1)_70%)]" />
         </div>
-
         <div className="container relative z-10 px-6 mx-auto">
-          <motion.div 
-            className="max-w-4xl"
-            initial="hidden"
-            animate="visible"
-            variants={STAGGER}
-          >
+          <motion.div className="max-w-4xl" initial="hidden" animate="visible" variants={STAGGER}>
             <motion.div variants={FADE_UP} className="flex items-center gap-3 mb-6">
               <span className="w-2 h-2 rounded-full bg-[#CC2222] animate-pulse" />
               <span className="text-sm font-semibold tracking-[0.2em] text-white/70 uppercase">L'agence de croissance #1 au Québec</span>
             </motion.div>
-            
             <motion.h1 variants={FADE_UP} className="text-6xl md:text-8xl font-black leading-[0.9] mb-8 text-white">
               DOMINEZ <br />
               <span className="text-gradient-gold">VOTRE MARCHÉ.</span>
             </motion.h1>
-            
             <motion.p variants={FADE_UP} className="text-xl md:text-2xl text-white/60 font-light max-w-2xl mb-10 leading-relaxed">
               Nous sommes l'agence qui propulse les entreprises ambitieuses. Des stratégies implacables. Des résultats mesurables. Un ROI qui fait la différence.
             </motion.p>
-            
             <motion.div variants={FADE_UP} className="flex flex-col sm:flex-row gap-5">
               <Button size="lg" className="group uppercase tracking-widest text-sm" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
                 Obtenir un plan d'attaque
@@ -63,10 +54,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. THE HOOK / PROBLEM */}
+      {/* 2. HOOK */}
       <section className="py-32 relative border-t border-white/5 bg-[#080808]">
         <div className="container px-6 mx-auto">
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -75,13 +66,12 @@ export default function Home() {
           >
             <div>
               <motion.h2 variants={FADE_UP} className="text-4xl md:text-5xl font-bold mb-6">
-                Le marketing générique <br/>
+                Le marketing générique <br />
                 <span className="text-white/40">tue les bonnes entreprises.</span>
               </motion.h2>
               <motion.p variants={FADE_UP} className="text-lg text-white/60 leading-relaxed mb-8">
                 Vos concurrents ne dorment pas. Si vous n'êtes pas omniprésent de manière stratégique, vous perdez des parts de marché chaque jour. Nous ne vendons pas des "likes" ou des "vues". Nous construisons des machines à acquisition de clients.
               </motion.p>
-              
               <motion.div variants={FADE_UP} className="grid grid-cols-2 gap-8 pt-8 border-t border-white/10">
                 <div>
                   <h4 className="text-4xl font-display font-bold text-primary mb-2">3s</h4>
@@ -93,12 +83,9 @@ export default function Home() {
                 </div>
               </motion.div>
             </div>
-            
             <motion.div variants={FADE_UP} className="relative">
               <div className="aspect-square rounded-full bg-gradient-gold opacity-10 blur-[100px] absolute inset-0" />
-              <img src={dataImage} alt="Data trends" className="rounded-xl border border-white/10 shadow-2xl relative z-10 w-full object-cover aspect-[4/3]" />
-              
-              {/* Floating card */}
+              <img src={dataImage} alt="Studio production" className="rounded-xl border border-white/10 shadow-2xl relative z-10 w-full object-cover aspect-[4/3]" />
               <div className="absolute -bottom-8 -left-8 bg-card border border-white/10 p-6 rounded-lg shadow-xl z-20 w-64 backdrop-blur-md">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-10 h-10 rounded bg-primary/20 flex items-center justify-center">
@@ -119,17 +106,20 @@ export default function Home() {
       {/* 3. SERVICES */}
       <section id="services" className="py-32 relative">
         <div className="container px-6 mx-auto">
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={STAGGER}
             className="text-center max-w-3xl mx-auto mb-20"
           >
-            <motion.h2 variants={FADE_UP} className="text-4xl md:text-5xl font-bold mb-6">Un arsenal complet <br/><span className="text-gradient-gold">pour la domination.</span></motion.h2>
-            <motion.p variants={FADE_UP} className="text-lg text-white/60">Chaque service que nous offrons est pensé avec un seul objectif en tête : générer de la croissance concrète pour votre entreprise.</motion.p>
+            <motion.h2 variants={FADE_UP} className="text-4xl md:text-5xl font-bold mb-6">
+              Un arsenal complet <br /><span className="text-gradient-gold">pour la domination.</span>
+            </motion.h2>
+            <motion.p variants={FADE_UP} className="text-lg text-white/60">
+              Chaque service que nous offrons est pensé avec un seul objectif en tête : générer de la croissance concrète pour votre entreprise.
+            </motion.p>
           </motion.div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { icon: Play, title: 'Vidéos Organiques', desc: 'Contenu court-format (Reels, TikTok, Shorts) conçu pour la viralité et la conversion naturelle.' },
@@ -138,7 +128,7 @@ export default function Home() {
               { icon: Camera, title: 'Création de Contenu', desc: 'Direction artistique, photographie et copywriting qui élèvent la perception de votre marque.' },
               { icon: Zap, title: 'Stratégie de Marque', desc: 'Positionnement pointu et identité visuelle pour vous démarquer instantanément de la compétition.' },
             ].map((service, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -152,9 +142,7 @@ export default function Home() {
                 <p className="text-white/50 leading-relaxed text-sm">{service.desc}</p>
               </motion.div>
             ))}
-            
-            {/* Visual spacer card */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -171,19 +159,16 @@ export default function Home() {
       <section id="approach" className="py-32 relative bg-[#050505]">
         <div className="container px-6 mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-            <motion.div 
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={STAGGER}
-            >
-              <motion.h2 variants={FADE_UP} className="text-4xl md:text-5xl font-bold mb-12">Notre approche <br/><span className="text-primary text-2xl font-normal tracking-widest uppercase mt-4 block">0 bullshit</span></motion.h2>
-              
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={STAGGER}>
+              <motion.h2 variants={FADE_UP} className="text-4xl md:text-5xl font-bold mb-12">
+                Notre approche <br />
+                <span className="text-primary text-2xl font-normal tracking-widest uppercase mt-4 block">0 bullshit</span>
+              </motion.h2>
               <div className="space-y-12">
                 {[
                   { num: '01', title: 'Audit & Stratégie', desc: 'Nous analysons votre marché, vos compétiteurs et vos données actuelles. Nous trouvons les failles à exploiter.' },
-                  { num: '02', title: 'Production Créative', desc: 'Notre équipe tourne, monte et rédige un contenu de calibre supérieur qui force l\'attention.' },
-                  { num: '03', title: 'Distribution & Scaling', desc: 'Nous lançons les campagnes. Nous analysons la data en temps réel. Nous injectons du budget là où le ROI explose.' }
+                  { num: '02', title: 'Production Créative', desc: "Notre équipe tourne, monte et rédige un contenu de calibre supérieur qui force l'attention." },
+                  { num: '03', title: 'Distribution & Scaling', desc: 'Nous lançons les campagnes. Nous analysons la data en temps réel. Nous injectons du budget là où le ROI explose.' },
                 ].map((step, i) => (
                   <motion.div variants={FADE_UP} key={i} className="flex gap-6">
                     <div className="font-display text-4xl font-black text-white/10">{step.num}</div>
@@ -195,8 +180,7 @@ export default function Home() {
                 ))}
               </div>
             </motion.div>
-
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -207,7 +191,6 @@ export default function Home() {
               <BarChart3 className="w-16 h-16 text-primary mb-8" />
               <h3 className="text-3xl font-display font-bold mb-4">La Data dicte la direction.</h3>
               <p className="text-white/60 text-lg mb-8">Nous ne prenons pas de décisions basées sur des "feelings". Chaque dollar investi doit avoir une justification mathématique et un retour traçable.</p>
-              
               <div className="space-y-4">
                 <div className="flex justify-between items-center text-sm">
                   <span className="text-white/70">Coût d'acquisition (CPA)</span>
@@ -216,7 +199,6 @@ export default function Home() {
                 <div className="w-full bg-black h-2 rounded-full overflow-hidden">
                   <div className="bg-[#CC2222] h-full w-[42%]" />
                 </div>
-                
                 <div className="flex justify-between items-center text-sm pt-4">
                   <span className="text-white/70">Taux de conversion</span>
                   <span className="font-bold text-primary">+185%</span>
@@ -230,7 +212,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. RESULTS */}
+      {/* 5. RESULTS — STATS */}
       <section id="results" className="py-32 relative">
         <div className="container px-6 mx-auto">
           <motion.h2
@@ -241,161 +223,11 @@ export default function Home() {
           >
             Des résultats qui <span className="text-gradient-gold">parlent.</span>
           </motion.h2>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { stat: '+1M', label: 'de vues', sub: 'générées en 2025' },
               { stat: '+900', label: 'prospects', sub: 'ultra qualifiés générés' },
-              { stat: '14
-
-      {/* 6. CONTACT / RESERVATION FORM */}
-      <section id="contact" className="py-32 relative overflow-hidden bg-[#0d0d0d]">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(200,146,42,0.15)_0%,transparent_60%)]" />
-
-        <div className="container px-6 mx-auto relative z-10">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={STAGGER}
-            className="max-w-5xl mx-auto"
-          >
-            <motion.div variants={FADE_UP} className="text-center mb-16">
-              <span className="text-xs font-bold tracking-[0.3em] text-primary uppercase mb-4 block">Travaillons ensemble</span>
-              <h2 className="text-5xl md:text-6xl font-black text-white leading-tight mb-6">
-                RÉSERVEZ VOTRE <br />
-                <span className="text-gradient-gold">APPEL STRATÉGIQUE</span>
-              </h2>
-              <p className="text-lg text-white/50 max-w-xl mx-auto">
-                Places limitées. Remplissez le formulaire et nous vous contacterons dans les 24h pour fixer votre session gratuite.
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
-              {/* Form */}
-              <motion.div variants={FADE_UP} className="lg:col-span-3">
-                <ContactForm />
-              </motion.div>
-
-              {/* Side info */}
-              <motion.div variants={FADE_UP} className="lg:col-span-2 space-y-6 pt-2">
-                {[
-                  { title: 'Appel de 30 minutes', desc: 'On analyse votre situation actuelle et on identifie les opportunités immédiates.' },
-                  { title: 'Stratégie sur mesure', desc: 'Vous repartez avec un plan d\'action concret, adapté à votre marché québécois.' },
-                  { title: 'Zéro engagement', desc: 'Pas de pression. Si on n\'est pas le bon fit, on vous le dira honnêtement.' },
-                ].map((item) => (
-                  <div key={item.title} className="flex gap-4">
-                    <CheckCircle2 className="text-primary w-6 h-6 mt-0.5 shrink-0" />
-                    <div>
-                      <div className="font-bold text-white mb-1">{item.title}</div>
-                      <div className="text-sm text-white/50 leading-relaxed">{item.desc}</div>
-                    </div>
-                  </div>
-                ))}
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-    </div>
-  );
-}
-
-function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState({ nom: '', entreprise: '', courriel: '', telephone: '', service: '', message: '' });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    await new Promise(r => setTimeout(r, 1200));
-    setLoading(false);
-    setSubmitted(true);
-  };
-
-  if (submitted) {
-    return (
-      <div className="bg-card border border-white/10 rounded-2xl p-10 text-center">
-        <CheckCircle2 className="text-primary w-16 h-16 mx-auto mb-6" />
-        <h3 className="text-2xl font-black text-white mb-3">Message envoyé !</h3>
-        <p className="text-white/60">Notre équipe vous contactera dans les prochaines 24 heures pour confirmer votre appel stratégique.</p>
-      </div>
-    );
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="bg-[#181818] border border-white/20 rounded-2xl p-8 space-y-5 shadow-[0_0_60px_rgba(200,146,42,0.08)]">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <div className="space-y-2">
-          <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">Votre nom *</label>
-          <input
-            name="nom" required value={form.nom} onChange={handleChange}
-            placeholder="Jean Tremblay"
-            className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors text-sm"
-          />
-        </div>
-        <div className="space-y-2">
-          <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">Entreprise *</label>
-          <input
-            name="entreprise" required value={form.entreprise} onChange={handleChange}
-            placeholder="Votre entreprise inc."
-            className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors text-sm"
-          />
-        </div>
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <div className="space-y-2">
-          <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">Courriel *</label>
-          <input
-            name="courriel" type="email" required value={form.courriel} onChange={handleChange}
-            placeholder="jean@entreprise.ca"
-            className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors text-sm"
-          />
-        </div>
-        <div className="space-y-2">
-          <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">Téléphone</label>
-          <input
-            name="telephone" type="tel" value={form.telephone} onChange={handleChange}
-            placeholder="514-000-0000"
-            className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors text-sm"
-          />
-        </div>
-      </div>
-      <div className="space-y-2">
-        <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">Service qui vous intéresse *</label>
-        <select
-          name="service" required value={form.service} onChange={handleChange}
-          className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors text-sm appearance-none"
-        >
-          <option value="" disabled className="text-white/30">Choisissez un service</option>
-          <option value="videos">Vidéos organiques</option>
-          <option value="pub">Campagnes publicitaires (Meta / Google / TikTok)</option>
-          <option value="reseaux">Gestion des réseaux sociaux</option>
-          <option value="contenu">Création de contenu</option>
-          <option value="strategie">Stratégie de marque</option>
-          <option value="tout">Tout — je veux une stratégie complète</option>
-        </select>
-      </div>
-      <div className="space-y-2">
-        <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">Parlez-nous de votre projet</label>
-        <textarea
-          name="message" value={form.message} onChange={handleChange} rows={4}
-          placeholder="Décrivez vos objectifs, votre budget approximatif, vos défis actuels..."
-          className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors text-sm resize-none"
-        />
-      </div>
-      <Button type="submit" size="lg" className="w-full uppercase tracking-widest text-sm h-14" disabled={loading}>
-        {loading ? 'Envoi en cours...' : 'Réserver mon appel gratuit →'}
-      </Button>
-    </form>
-  );
-}
-, label: 'coût / prospect', sub: 'coût moyen par prospect' },
+              { stat: '14$', label: 'coût / prospect', sub: 'coût moyen par prospect' },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -405,11 +237,9 @@ function ContactForm() {
                 transition={{ delay: i * 0.15 }}
                 className="p-10 border border-white/10 bg-card rounded-2xl relative overflow-hidden group hover:border-primary/40 transition-colors"
               >
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(200,146,42,0.06)_0%,transparent_70%)] group-hover:opacity-150 transition-opacity" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(200,146,42,0.06)_0%,transparent_70%)]" />
                 <div className="relative z-10">
-                  <div className="text-6xl md:text-7xl font-black text-gradient-gold mb-2 leading-none">
-                    {item.stat}
-                  </div>
+                  <div className="text-6xl md:text-7xl font-black text-gradient-gold mb-2 leading-none">{item.stat}</div>
                   <div className="text-xl font-bold text-white mb-1">{item.label}</div>
                   <div className="text-sm text-white/50">{item.sub}</div>
                 </div>
@@ -419,10 +249,117 @@ function ContactForm() {
         </div>
       </section>
 
-      {/* 6. CONTACT / RESERVATION FORM */}
+      {/* 5b. CODE TERMINALS */}
+      <section className="py-28 relative overflow-hidden bg-[#060606]">
+        {/* Giant background word */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+          <span className="text-[22vw] font-black text-white/[0.025] leading-none tracking-tighter whitespace-nowrap">
+            RÉSULTATS
+          </span>
+        </div>
+
+        <div className="container px-6 mx-auto relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="text-xs font-bold tracking-[0.3em] text-primary uppercase mb-4 block">Ce qu'on construit pour vous</span>
+            <h2 className="text-4xl md:text-5xl font-black text-white">
+              La stratégie derrière <span className="text-gradient-gold">chaque résultat.</span>
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {/* Terminal 1 — Meta Ads */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0 }}
+              className="rounded-xl overflow-hidden border border-white/10 shadow-2xl"
+            >
+              <div className="bg-[#1a1a1a] px-4 py-3 flex items-center gap-2 border-b border-white/10">
+                <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+                <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
+                <span className="w-3 h-3 rounded-full bg-[#28c840]" />
+                <span className="ml-3 text-xs text-white/40 font-mono">meta_ads_config.js</span>
+              </div>
+              <div className="bg-[#111] p-5 font-mono text-xs leading-relaxed">
+                <div><span className="text-[#C8922A]">const</span> <span className="text-[#7dd3fc]">campaign</span> <span className="text-white/60">= {'{'}</span></div>
+                <div className="pl-4"><span className="text-[#86efac]">budget</span><span className="text-white/60">:</span> <span className="text-[#fbbf24]">1500</span><span className="text-white/60">,</span></div>
+                <div className="pl-4"><span className="text-[#86efac]">audience</span><span className="text-white/60">:</span> <span className="text-[#f87171]">'lookalike_3%'</span><span className="text-white/60">,</span></div>
+                <div className="pl-4"><span className="text-[#86efac]">objective</span><span className="text-white/60">:</span> <span className="text-[#f87171]">'LEAD_GEN'</span><span className="text-white/60">,</span></div>
+                <div className="pl-4"><span className="text-[#86efac]">cpl_target</span><span className="text-white/60">:</span> <span className="text-[#fbbf24]">14</span><span className="text-white/60">,</span></div>
+                <div className="pl-4"><span className="text-[#86efac]">roas</span><span className="text-white/60">:</span> <span className="text-[#fbbf24]">4.2</span></div>
+                <div><span className="text-white/60">{'}'}</span></div>
+                <div className="mt-3"><span className="text-[#C8922A]">export</span> <span className="text-[#7dd3fc]">launch</span><span className="text-white/60">(campaign)</span></div>
+                <div className="mt-2 text-[#28c840]">✓ Campagne active — 900 leads</div>
+              </div>
+            </motion.div>
+
+            {/* Terminal 2 — Analytics */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.15 }}
+              className="rounded-xl overflow-hidden border border-white/10 shadow-2xl"
+            >
+              <div className="bg-[#1a1a1a] px-4 py-3 flex items-center gap-2 border-b border-white/10">
+                <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+                <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
+                <span className="w-3 h-3 rounded-full bg-[#28c840]" />
+                <span className="ml-3 text-xs text-white/40 font-mono">analytics_report.py</span>
+              </div>
+              <div className="bg-[#111] p-5 font-mono text-xs leading-relaxed">
+                <div><span className="text-[#C8922A]">import</span> <span className="text-[#7dd3fc]">mds_analytics</span> <span className="text-[#C8922A]">as</span> <span className="text-white/60">mds</span></div>
+                <div className="mt-2"><span className="text-white/40"># Rapport Q1 2025</span></div>
+                <div><span className="text-[#7dd3fc]">data</span> <span className="text-white/60">= mds.report(</span></div>
+                <div className="pl-4"><span className="text-[#86efac]">views</span><span className="text-white/60">=</span><span className="text-[#fbbf24]">1_000_000</span><span className="text-white/60">,</span></div>
+                <div className="pl-4"><span className="text-[#86efac]">leads</span><span className="text-white/60">=</span><span className="text-[#fbbf24]">900</span><span className="text-white/60">,</span></div>
+                <div className="pl-4"><span className="text-[#86efac]">conv_rate</span><span className="text-white/60">=</span><span className="text-[#fbbf24]">0.09</span></div>
+                <div><span className="text-white/60">)</span></div>
+                <div className="mt-3"><span className="text-[#7dd3fc]">print</span><span className="text-white/60">(data.summary())</span></div>
+                <div className="mt-2 text-[#28c840]">{'>'} ROI moyen: +247%</div>
+              </div>
+            </motion.div>
+
+            {/* Terminal 3 — Content Strategy */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="rounded-xl overflow-hidden border border-white/10 shadow-2xl"
+            >
+              <div className="bg-[#1a1a1a] px-4 py-3 flex items-center gap-2 border-b border-white/10">
+                <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+                <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
+                <span className="w-3 h-3 rounded-full bg-[#28c840]" />
+                <span className="ml-3 text-xs text-white/40 font-mono">content_strategy.ts</span>
+              </div>
+              <div className="bg-[#111] p-5 font-mono text-xs leading-relaxed">
+                <div><span className="text-[#C8922A]">type</span> <span className="text-[#7dd3fc]">Strategy</span> <span className="text-white/60">= {'{'}</span></div>
+                <div className="pl-4"><span className="text-[#86efac]">platform</span><span className="text-white/60">:</span> <span className="text-[#f87171]">'TikTok' | 'Reels'</span></div>
+                <div className="pl-4"><span className="text-[#86efac]">hook</span><span className="text-white/60">:</span> <span className="text-[#f87171]">string</span></div>
+                <div className="pl-4"><span className="text-[#86efac]">cta</span><span className="text-white/60">:</span> <span className="text-[#f87171]">string</span></div>
+                <div className="pl-4"><span className="text-[#86efac]">target_views</span><span className="text-white/60">:</span> <span className="text-[#fbbf24]">number</span></div>
+                <div><span className="text-white/60">{'}'}</span></div>
+                <div className="mt-3"><span className="text-[#C8922A]">const</span> <span className="text-[#7dd3fc]">viral</span><span className="text-white/60">:</span> <span className="text-[#7dd3fc]">Strategy</span> <span className="text-white/60">= {'{'}</span></div>
+                <div className="pl-4"><span className="text-[#86efac]">target_views</span><span className="text-white/60">:</span> <span className="text-[#fbbf24]">1_000_000</span></div>
+                <div><span className="text-white/60">{'}'}</span></div>
+                <div className="mt-2 text-[#28c840]">✓ Objectif atteint</div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. CONTACT */}
       <section id="contact" className="py-32 relative overflow-hidden bg-[#0d0d0d]">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(200,146,42,0.15)_0%,transparent_60%)]" />
-
         <div className="container px-6 mx-auto relative z-10">
           <motion.div
             initial="hidden"
@@ -441,19 +378,15 @@ function ContactForm() {
                 Places limitées. Remplissez le formulaire et nous vous contacterons dans les 24h pour fixer votre session gratuite.
               </p>
             </motion.div>
-
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
-              {/* Form */}
               <motion.div variants={FADE_UP} className="lg:col-span-3">
                 <ContactForm />
               </motion.div>
-
-              {/* Side info */}
               <motion.div variants={FADE_UP} className="lg:col-span-2 space-y-6 pt-2">
                 {[
                   { title: 'Appel de 30 minutes', desc: 'On analyse votre situation actuelle et on identifie les opportunités immédiates.' },
-                  { title: 'Stratégie sur mesure', desc: 'Vous repartez avec un plan d\'action concret, adapté à votre marché québécois.' },
-                  { title: 'Zéro engagement', desc: 'Pas de pression. Si on n\'est pas le bon fit, on vous le dira honnêtement.' },
+                  { title: 'Stratégie sur mesure', desc: "Vous repartez avec un plan d'action concret, adapté à votre marché québécois." },
+                  { title: 'Zéro engagement', desc: "Pas de pression. Si on n'est pas le bon fit, on vous le dira honnêtement." },
                 ].map((item) => (
                   <div key={item.title} className="flex gap-4">
                     <CheckCircle2 className="text-primary w-6 h-6 mt-0.5 shrink-0" />
@@ -504,45 +437,31 @@ function ContactForm() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div className="space-y-2">
           <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">Votre nom *</label>
-          <input
-            name="nom" required value={form.nom} onChange={handleChange}
-            placeholder="Jean Tremblay"
-            className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors text-sm"
-          />
+          <input name="nom" required value={form.nom} onChange={handleChange} placeholder="Jean Tremblay"
+            className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors text-sm" />
         </div>
         <div className="space-y-2">
           <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">Entreprise *</label>
-          <input
-            name="entreprise" required value={form.entreprise} onChange={handleChange}
-            placeholder="Votre entreprise inc."
-            className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors text-sm"
-          />
+          <input name="entreprise" required value={form.entreprise} onChange={handleChange} placeholder="Votre entreprise inc."
+            className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors text-sm" />
         </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div className="space-y-2">
           <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">Courriel *</label>
-          <input
-            name="courriel" type="email" required value={form.courriel} onChange={handleChange}
-            placeholder="jean@entreprise.ca"
-            className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors text-sm"
-          />
+          <input name="courriel" type="email" required value={form.courriel} onChange={handleChange} placeholder="jean@entreprise.ca"
+            className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors text-sm" />
         </div>
         <div className="space-y-2">
           <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">Téléphone</label>
-          <input
-            name="telephone" type="tel" value={form.telephone} onChange={handleChange}
-            placeholder="514-000-0000"
-            className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors text-sm"
-          />
+          <input name="telephone" type="tel" value={form.telephone} onChange={handleChange} placeholder="514-000-0000"
+            className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors text-sm" />
         </div>
       </div>
       <div className="space-y-2">
         <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">Service qui vous intéresse *</label>
-        <select
-          name="service" required value={form.service} onChange={handleChange}
-          className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors text-sm appearance-none"
-        >
+        <select name="service" required value={form.service} onChange={handleChange}
+          className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors text-sm appearance-none">
           <option value="" disabled className="text-white/30">Choisissez un service</option>
           <option value="videos">Vidéos organiques</option>
           <option value="pub">Campagnes publicitaires (Meta / Google / TikTok)</option>
@@ -554,11 +473,9 @@ function ContactForm() {
       </div>
       <div className="space-y-2">
         <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">Parlez-nous de votre projet</label>
-        <textarea
-          name="message" value={form.message} onChange={handleChange} rows={4}
+        <textarea name="message" value={form.message} onChange={handleChange} rows={4}
           placeholder="Décrivez vos objectifs, votre budget approximatif, vos défis actuels..."
-          className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors text-sm resize-none"
-        />
+          className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors text-sm resize-none" />
       </div>
       <Button type="submit" size="lg" className="w-full uppercase tracking-widest text-sm h-14" disabled={loading}>
         {loading ? 'Envoi en cours...' : 'Réserver mon appel gratuit →'}
