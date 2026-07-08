@@ -380,13 +380,15 @@ export default function Home() {
                 </p>
                 <div className="space-y-6">
                   {[
-                    { label: 'Coût d\'acquisition (CPA)', val: '-42%', color: '#CC2222', pct: 42 },
-                    { label: 'Taux de conversion', val: '+185%', color: '#C8922A', pct: 85 },
+                    { label: 'Coût d\'acquisition (CPA)', to: -62, color: '#CC2222', pct: 62 },
+                    { label: 'Taux de conversion', to: 185, color: '#22c55e', pct: 85 },
                   ].map((item, i) => (
                     <div key={i}>
                       <div className="flex justify-between items-center text-sm mb-2">
                         <span className="text-white/65">{item.label}</span>
-                        <span className="font-bold" style={{ color: item.color }}>{item.val}</span>
+                        <span className="font-bold" style={{ color: item.color }}>
+                          <Counter to={item.to} prefix={item.to > 0 ? '+' : ''} suffix="%" />
+                        </span>
                       </div>
                       <div className="w-full bg-white/5 h-1.5 rounded-full overflow-hidden">
                         <motion.div
