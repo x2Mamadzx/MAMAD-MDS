@@ -78,7 +78,7 @@ export function Footer() {
         <div className="border-t border-black/10 pt-8 flex flex-col md:flex-row items-center justify-between text-sm text-black/55">
           <p>© {new Date().getFullYear()} MDS Marketing. Tous droits réservés.</p>
           <div className="flex gap-6 mt-4 md:mt-0 items-center">
-            <span className="cursor-default">Politique de confidentialité</span>
+            <Link href="/politique-de-confidentialite" className="hover:text-primary transition-colors">Politique de confidentialité</Link>
             <span className="cursor-default">Termes et conditions</span>
             <Link href="/admin" className="hover:text-primary transition-colors">Espace admin</Link>
           </div>
