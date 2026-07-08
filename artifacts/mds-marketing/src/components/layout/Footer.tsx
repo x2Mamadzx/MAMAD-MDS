@@ -1,5 +1,6 @@
 import React from 'react';
 import { Instagram, Linkedin, Mail } from 'lucide-react';
+import { Link } from 'wouter';
 import logoUrl from '@assets/IMG_8165_1783477667692.jpg';
 
 const scrollTo = (id: string) => {
@@ -73,9 +74,10 @@ export function Footer() {
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between text-sm text-white/40">
           <p>© {new Date().getFullYear()} MDS Marketing. Tous droits réservés.</p>
-          <div className="flex gap-6 mt-4 md:mt-0">
+          <div className="flex gap-6 mt-4 md:mt-0 items-center">
             <span className="cursor-default">Politique de confidentialité</span>
             <span className="cursor-default">Termes et conditions</span>
+            <Link href="/admin" className="hover:text-primary transition-colors">Espace admin</Link>
           </div>
         </div>
       </div>

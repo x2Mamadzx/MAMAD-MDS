@@ -1,0 +1,2 @@
+- [Orval zod email format](orval-zod-v4-mismatch.md) — avoid OpenAPI `format: email`; orval emits zod v4 `zod.email()` which breaks on this workspace's zod v3.
+- [React Query mutation + list display](react-query-mutation-cache-invalidation.md) — after a mutation that changes an item shown from a list query, invalidate that list's query key on success or the UI shows stale state.

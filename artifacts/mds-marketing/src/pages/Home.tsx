@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useSpring, useInView, animate } from 'framer-motion';
 import { ArrowRight, BarChart3, Target, Zap, TrendingUp, Play, Camera, Users, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useCreateLead } from '@workspace/api-client-react';
 import heroImage from '@assets/generated_images/hero-boardroom.jpg';
 import servicesImage from '@assets/generated_images/services-content.jpg';
 import dataImage from '@assets/generated_images/studio-production-natural.jpg';
@@ -527,10 +528,22 @@ export default function Home() {
 }
 
 /* ─── Contact Form ─────────────────────────────────────────────── */
+const ENTREPRISES_STORAGE_KEY = 'mds_recent_entreprises';
+
 function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({ nom: '', entreprise: '', courriel: '', telephone: '', service: '', message: '' });
+  const [recentEntreprises, setRecentEntreprises] = useState<string[]>([]);
+  const createLead = useCreateLead();
+
+  useEffect(() => {
+    try {
+      const stored = JSON.parse(localStorage.getItem(ENTREPRISES_STORAGE_KEY) ?? '[]');
+      if (Array.isArray(stored)) setRecentEntreprises(stored);
+    } catch {
+      // ignore malformed storage
+    }
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -538,11 +551,30 @@ function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-    await new Promise(r => setTimeout(r, 1200));
-    setLoading(false);
-    setSubmitted(true);
+    createLead.mutate(
+      {
+        data: {
+          nom: form.nom,
+          entreprise: form.entreprise || undefined,
+          courriel: form.courriel,
+          telephone: form.telephone || undefined,
+          service: form.service,
+          message: form.message || undefined,
+        },
+      },
+      {
+        onSuccess: () => {
+          setSubmitted(true);
+          if (form.entreprise.trim()) {
+            const updated = [form.entreprise.trim(), ...recentEntreprises.filter(e => e !== form.entreprise.trim())].slice(0, 10);
+            localStorage.setItem(ENTREPRISES_STORAGE_KEY, JSON.stringify(updated));
+          }
+        },
+      },
+    );
   };
+
+  const loading = createLead.isPending;
 
   if (submitted) {
     return (
@@ -581,8 +613,11 @@ function ContactForm() {
           <input name="nom" required value={form.nom} onChange={handleChange} placeholder="Jean Tremblay" className={inputClass} />
         </div>
         <div className="space-y-2">
-          <label className="text-xs font-semibold text-white/50 uppercase tracking-wider">Entreprise *</label>
-          <input name="entreprise" required value={form.entreprise} onChange={handleChange} placeholder="Votre entreprise inc." className={inputClass} />
+          <label className="text-xs font-semibold text-white/50 uppercase tracking-wider">Entreprise</label>
+          <input name="entreprise" autoComplete="organization" list="entreprises-suggestions" value={form.entreprise} onChange={handleChange} placeholder="Votre entreprise inc." className={inputClass} />
+          <datalist id="entreprises-suggestions">
+            {recentEntreprises.map(e => <option key={e} value={e} />)}
+          </datalist>
         </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -627,6 +662,9 @@ function ContactForm() {
           ) : 'Réserver mon appel gratuit →'}
         </Button>
       </motion.div>
+      {createLead.isError && (
+        <p className="text-sm text-red-400 text-center">Une erreur est survenue. Veuillez réessayer.</p>
+      )}
     </motion.form>
   );
 }
