@@ -25,11 +25,12 @@ export const HealthCheckResponse = zod.object({
 
 
 
+
 export const CreateLeadBody = zod.object({
   "nom": zod.string().min(1),
   "entreprise": zod.string().optional(),
   "courriel": zod.string().min(1),
-  "telephone": zod.string().optional(),
+  "telephone": zod.string().min(1),
   "service": zod.string().min(1),
   "message": zod.string().optional()
 })

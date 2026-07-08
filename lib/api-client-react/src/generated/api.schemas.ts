@@ -43,7 +43,8 @@ export interface LeadInput {
   entreprise?: string;
   /** @minLength 1 */
   courriel: string;
-  telephone?: string;
+  /** @minLength 1 */
+  telephone: string;
   /** @minLength 1 */
   service: string;
   message?: string;

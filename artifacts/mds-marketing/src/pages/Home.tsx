@@ -557,7 +557,7 @@ function ContactForm() {
           nom: form.nom,
           entreprise: form.entreprise || undefined,
           courriel: form.courriel,
-          telephone: form.telephone || undefined,
+          telephone: form.telephone,
           service: form.service,
           message: form.message || undefined,
         },
@@ -626,8 +626,8 @@ function ContactForm() {
           <input name="courriel" type="email" required value={form.courriel} onChange={handleChange} placeholder="jean@entreprise.ca" className={inputClass} />
         </div>
         <div className="space-y-2">
-          <label className="text-xs font-semibold text-white/50 uppercase tracking-wider">Téléphone</label>
-          <input name="telephone" type="tel" value={form.telephone} onChange={handleChange} placeholder="418-000-0000" className={inputClass} />
+          <label className="text-xs font-semibold text-white/50 uppercase tracking-wider">Téléphone *</label>
+          <input name="telephone" type="tel" required value={form.telephone} onChange={handleChange} placeholder="418-000-0000" className={inputClass} />
         </div>
       </div>
       <div className="space-y-2">

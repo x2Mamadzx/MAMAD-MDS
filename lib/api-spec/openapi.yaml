@@ -172,6 +172,7 @@ components:
           minLength: 1
         telephone:
           type: string
+          minLength: 1
         service:
           type: string
           minLength: 1
@@ -180,6 +181,7 @@ components:
       required:
         - nom
         - courriel
+        - telephone
         - service
     LeadUpdate:
       type: object
