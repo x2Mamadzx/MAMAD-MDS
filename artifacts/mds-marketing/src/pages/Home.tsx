@@ -275,8 +275,8 @@ export default function Home() {
       </section>
 
       {/* 6. CONTACT / RESERVATION FORM */}
-      <section id="contact" className="py-32 relative overflow-hidden bg-[#050505]">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(200,146,42,0.08)_0%,transparent_60%)]" />
+      <section id="contact" className="py-32 relative overflow-hidden bg-[#0d0d0d]">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(200,146,42,0.15)_0%,transparent_60%)]" />
 
         <div className="container px-6 mx-auto relative z-10">
           <motion.div
@@ -355,7 +355,7 @@ function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-card border border-white/10 rounded-2xl p-8 space-y-5">
+    <form onSubmit={handleSubmit} className="bg-[#181818] border border-white/20 rounded-2xl p-8 space-y-5 shadow-[0_0_60px_rgba(200,146,42,0.08)]">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div className="space-y-2">
           <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">Votre nom *</label>
