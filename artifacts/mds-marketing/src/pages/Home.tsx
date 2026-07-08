@@ -546,7 +546,8 @@ export default function Home() {
             variants={STAGGER}
             className="max-w-5xl mx-auto"
           >
-            <motion.div variants={FADE_UP} className="text-center mb-8 md:mb-16">
+            {/* ── Titre ── */}
+            <motion.div variants={FADE_UP} className="text-center mb-10 md:mb-14">
               <span className="text-xs font-bold tracking-[0.3em] text-primary uppercase mb-4 block">Maintenant ou jamais</span>
               <div className="overflow-hidden">
                 <motion.h2
@@ -558,39 +559,87 @@ export default function Home() {
                 </motion.h2>
               </div>
               <motion.p variants={FADE_UP} className="text-base md:text-lg text-black/60 max-w-xl mx-auto">
-                Pendant que vous hésitez, vos concurrents avancent. Un appel de 15 minutes suffit pour changer la trajectoire de votre entreprise.
+                Pendant que vous hésitez, vos concurrents avancent. Un appel suffit pour changer la trajectoire de votre entreprise.
               </motion.p>
             </motion.div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 md:gap-12 items-start">
-              <motion.div variants={FADE_UP} className="lg:col-span-3">
-                <ContactForm onConverted={markConverted} />
-              </motion.div>
-              <motion.div variants={FADE_UP} className="lg:col-span-2 space-y-6 pt-2">
-                {[
-                  { title: 'Un appel direct, sans détour.', desc: 'On identifie vos opportunités immédiates et on trace le plan ensemble.' },
-                  { title: 'Résultats concrets dès le lendemain', desc: "Vous repartez avec des actions précises à exécuter — pas des PowerPoints vides." },
-                  { title: 'Zéro engagement, 100% valeur', desc: "On livre de la valeur avant même de travailler ensemble. Si on n'est pas le bon fit, on vous le dit." },
-                ].map((item, i) => (
-                  <motion.div
-                    key={item.title}
-                    initial={{ opacity: 0, x: 30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1 + i * 0.12, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                    className="flex gap-4 group"
-                  >
-                    <motion.div whileHover={{ scale: 1.2, rotate: 10 }} transition={{ type: 'spring', stiffness: 400, damping: 15 }}>
-                      <CheckCircle2 className="text-primary w-6 h-6 mt-0.5 shrink-0" />
-                    </motion.div>
-                    <div>
-                      <div className="font-bold text-black mb-1">{item.title}</div>
-                      <div className="text-sm text-black/60 leading-relaxed">{item.desc}</div>
+            {/* ── Hologram Ticker ── */}
+            <motion.div
+              variants={FADE_UP}
+              className="relative mb-10 md:mb-14 rounded-xl overflow-hidden"
+              style={{ background: 'linear-gradient(135deg,#0c0c0c 0%,#111 50%,#0c0c0c 100%)' }}
+            >
+              {/* scanline grid overlay */}
+              <div className="absolute inset-0 opacity-[0.06] pointer-events-none"
+                style={{ backgroundImage: 'repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(255,255,255,0.3) 3px,rgba(255,255,255,0.3) 4px),repeating-linear-gradient(90deg,transparent,transparent 3px,rgba(255,255,255,0.3) 3px,rgba(255,255,255,0.3) 4px)' }} />
+              {/* top gold line */}
+              <div className="h-px w-full bg-gradient-to-r from-transparent via-[#C8922A] to-transparent" />
+
+              <div className="py-5 overflow-hidden">
+                <motion.div
+                  className="flex gap-0 whitespace-nowrap"
+                  animate={{ x: ['0%', '-50%'] }}
+                  transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
+                >
+                  {[...Array(2)].map((_, copyIdx) => (
+                    <div key={copyIdx} className="flex items-center gap-0 shrink-0">
+                      {[
+                        { val: '+50k', label: 'vues organiques' },
+                        { val: '+22', label: 'prospects qualifiés' },
+                        { val: '+187%', label: 'de revenus' },
+                        { val: '+3M', label: 'impressions générées' },
+                        { val: '+400%', label: 'ROI moyen' },
+                        { val: '10+', label: 'clients actifs' },
+                        { val: '+68%', label: "taux d'engagement" },
+                        { val: '24h', label: 'délai de réponse' },
+                        { val: '+120k', label: 'abonnés cumulés' },
+                        { val: '98%', label: 'clients satisfaits' },
+                      ].map((stat, i) => (
+                        <React.Fragment key={i}>
+                          <div className="inline-flex items-center gap-3 px-7 py-1">
+                            <span className="text-xl md:text-2xl font-black text-[#F5C842] tracking-tight drop-shadow-[0_0_10px_rgba(245,200,66,0.7)]">
+                              {stat.val}
+                            </span>
+                            <span className="text-xs md:text-sm text-white/50 uppercase tracking-widest font-medium">
+                              {stat.label}
+                            </span>
+                          </div>
+                          <span className="text-[#C8922A]/40 text-lg select-none">◆</span>
+                        </React.Fragment>
+                      ))}
                     </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
+                  ))}
+                </motion.div>
+              </div>
+
+              {/* bottom gold line */}
+              <div className="h-px w-full bg-gradient-to-r from-transparent via-[#C8922A] to-transparent" />
+              {/* left/right fade masks */}
+              <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#0c0c0c] to-transparent pointer-events-none" />
+              <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#0c0c0c] to-transparent pointer-events-none" />
+            </motion.div>
+
+            {/* ── Bullets row ── */}
+            <motion.div variants={FADE_UP} className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 md:mb-12">
+              {[
+                { title: 'Un appel direct, sans détour.', desc: 'On identifie vos opportunités immédiates et on trace le plan ensemble.' },
+                { title: 'Résultats concrets dès le lendemain', desc: 'Vous repartez avec des actions précises à exécuter — pas des PowerPoints vides.' },
+                { title: 'Zéro engagement, 100% valeur', desc: "On livre de la valeur avant même de travailler ensemble. Si on n'est pas le bon fit, on vous le dit." },
+              ].map((item, i) => (
+                <div key={i} className="flex gap-3">
+                  <CheckCircle2 className="text-primary w-5 h-5 mt-0.5 shrink-0" />
+                  <div>
+                    <div className="font-bold text-black text-sm mb-1">{item.title}</div>
+                    <div className="text-xs text-black/55 leading-relaxed">{item.desc}</div>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+
+            {/* ── Form (plus petit, centré) ── */}
+            <motion.div variants={FADE_UP} className="max-w-2xl mx-auto">
+              <ContactForm onConverted={markConverted} />
+            </motion.div>
           </motion.div>
         </div>
       </section>
