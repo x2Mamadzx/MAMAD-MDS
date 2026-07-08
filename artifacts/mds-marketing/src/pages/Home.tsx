@@ -547,18 +547,18 @@ export default function Home() {
             className="max-w-5xl mx-auto"
           >
             <motion.div variants={FADE_UP} className="text-center mb-8 md:mb-16">
-              <span className="text-xs font-bold tracking-[0.3em] text-primary uppercase mb-4 block">Travaillons ensemble</span>
+              <span className="text-xs font-bold tracking-[0.3em] text-primary uppercase mb-4 block">Maintenant ou jamais</span>
               <div className="overflow-hidden">
                 <motion.h2
                   variants={{ hidden: { y: '100%' }, visible: { y: 0, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } } }}
                   className="text-4xl md:text-7xl font-black text-black leading-[0.9] mb-4 md:mb-6"
                 >
-                  RÉSERVEZ VOTRE <br />
-                  <span className="text-gradient-gold">APPEL STRATÉGIQUE</span>
+                  STOP D'ATTENDRE. <br />
+                  <span className="text-gradient-gold">PASSEZ À L'ACTION.</span>
                 </motion.h2>
               </div>
               <motion.p variants={FADE_UP} className="text-base md:text-lg text-black/60 max-w-xl mx-auto">
-                Places limitées. Remplissez le formulaire et nous vous contacterons dans les 24h pour fixer votre session gratuite.
+                Pendant que vous hésitez, vos concurrents avancent. Un appel de 15 minutes suffit pour changer la trajectoire de votre entreprise.
               </motion.p>
             </motion.div>
 
@@ -568,9 +568,9 @@ export default function Home() {
               </motion.div>
               <motion.div variants={FADE_UP} className="lg:col-span-2 space-y-6 pt-2">
                 {[
-                  { title: 'Appel de 15 minutes', desc: 'On analyse votre situation actuelle et on identifie les opportunités immédiates.' },
-                  { title: 'Stratégie sur mesure', desc: "Vous repartez avec un plan d'action concret, adapté à votre marché québécois." },
-                  { title: 'Zéro engagement', desc: "Pas de pression, juste un appel pour discuter de votre projet." },
+                  { title: '15 minutes. C\'est tout.', desc: 'Un appel direct, sans détour. On identifie vos opportunités immédiates et on trace le plan.' },
+                  { title: 'Résultats concrets dès le lendemain', desc: "Vous repartez avec des actions précises à exécuter — pas des PowerPoints vides." },
+                  { title: 'Zéro engagement, 100% valeur', desc: "On livre de la valeur avant même de travailler ensemble. Si on n'est pas le bon fit, on vous le dit." },
                 ].map((item, i) => (
                   <motion.div
                     key={item.title}
@@ -692,9 +692,9 @@ function ContactForm({ onConverted }: { onConverted: () => void }) {
       <div className="p-7 md:p-10">
         {/* Form header */}
         <div className="mb-8 pb-6 border-b border-black/6">
-          <p className="text-[10px] tracking-[0.25em] text-[#C8922A] font-bold uppercase mb-1.5">Session stratégique gratuite</p>
+          <p className="text-[10px] tracking-[0.25em] text-[#C8922A] font-bold uppercase mb-1.5">Appel gratuit — 15 minutes</p>
           <h3 className="text-xl md:text-2xl font-black text-black leading-tight">
-            Réservez votre appel <span className="text-gradient-gold">en 15 secondes</span>
+            Remplissez. On vous rappelle. <span className="text-gradient-gold">Simple.</span>
           </h3>
         </div>
 
