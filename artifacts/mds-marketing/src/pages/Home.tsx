@@ -517,7 +517,7 @@ export default function Home() {
                   />
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
                   <div className="relative z-10">
-                    <div className="text-6xl md:text-7xl font-black text-gradient-gold mb-3 leading-none tabular-nums">
+                    <div className="text-5xl md:text-6xl font-black text-gradient-gold mb-3 leading-none tabular-nums whitespace-nowrap">
                       <Counter to={item.to} from={item.from} prefix={item.prefix} suffix={item.suffix} format={item.format} />
                     </div>
                     <div className="text-xl font-bold text-black mb-1">{item.label}</div>
