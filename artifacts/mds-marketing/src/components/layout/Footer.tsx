@@ -1,5 +1,5 @@
 import React from 'react';
-import { Instagram, Linkedin, Mail } from 'lucide-react';
+import { Facebook, Linkedin, Mail, Phone } from 'lucide-react';
 import { Link } from 'wouter';
 import logoUrl from '@assets/IMG_8165_1783477667692.jpg';
 
@@ -22,14 +22,17 @@ export function Footer() {
               L'agence des entreprises québécoises qui refusent le statu quo. Nous transformons l'attention en revenus.
             </p>
             <div className="flex gap-4">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-black/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all text-black">
-                <Instagram size={20} />
+              <a href="https://www.facebook.com/profile.php?id=61575313071488" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-black/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all text-black">
+                <Facebook size={20} />
               </a>
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-black/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all text-black">
                 <Linkedin size={20} />
               </a>
               <a href="mailto:info@agmds.com" className="w-12 h-12 rounded-full bg-black/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all text-black">
                 <Mail size={20} />
+              </a>
+              <a href="tel:4183139250" className="w-12 h-12 rounded-full bg-black/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all text-black">
+                <Phone size={20} />
               </a>
             </div>
           </div>
