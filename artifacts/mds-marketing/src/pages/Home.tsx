@@ -261,7 +261,7 @@ export default function Home() {
               <motion.div variants={FADE_UP} className="grid grid-cols-2 gap-8 pt-8 border-t border-black/10">
                 {[
                   { val: '3s', label: 'Pour capter l\'attention de votre cible' },
-                  { val: '10x', label: 'Le potentiel de ROI d\'une campagne optimisée' },
+                  { val: '100x', label: 'Le potentiel de ROI d\'une campagne optimisée' },
                 ].map((item, i) => (
                   <div key={i}>
                     <motion.h4
