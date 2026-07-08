@@ -230,43 +230,188 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. TESTIMONIALS / PROOF */}
+      {/* 5. RESULTS */}
       <section id="results" className="py-32 relative">
         <div className="container px-6 mx-auto">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold text-center mb-20"
           >
-            Ils ont choisi de <span className="text-gradient-gold">gagner.</span>
+            Des résultats qui <span className="text-gradient-gold">parlent.</span>
           </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { quote: "MDS a complètement transformé notre acquisition client. En 3 mois, nous avons dû engager du nouveau personnel pour gérer la demande générée par leurs campagnes.", author: "Roy Capital et Associés", role: "Cabinet financier" },
-              { quote: "Leur approche vidéo organique a fait exploser notre visibilité. Nous avons généré plus de ventes avec une seule vidéo virale qu'en 2 ans de marketing traditionnel.", author: "Samuel Auclair", role: "Entrepreneur" },
-            ].map((testimonial, i) => (
-              <motion.div 
+              { stat: '+1M', label: 'de vues', sub: 'générées en 2025' },
+              { stat: '+900', label: 'prospects', sub: 'ultra qualifiés générés' },
+              { stat: '14
+
+      {/* 6. CONTACT / RESERVATION FORM */}
+      <section id="contact" className="py-32 relative overflow-hidden bg-[#0d0d0d]">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(200,146,42,0.15)_0%,transparent_60%)]" />
+
+        <div className="container px-6 mx-auto relative z-10">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={STAGGER}
+            className="max-w-5xl mx-auto"
+          >
+            <motion.div variants={FADE_UP} className="text-center mb-16">
+              <span className="text-xs font-bold tracking-[0.3em] text-primary uppercase mb-4 block">Travaillons ensemble</span>
+              <h2 className="text-5xl md:text-6xl font-black text-white leading-tight mb-6">
+                RÉSERVEZ VOTRE <br />
+                <span className="text-gradient-gold">APPEL STRATÉGIQUE</span>
+              </h2>
+              <p className="text-lg text-white/50 max-w-xl mx-auto">
+                Places limitées. Remplissez le formulaire et nous vous contacterons dans les 24h pour fixer votre session gratuite.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
+              {/* Form */}
+              <motion.div variants={FADE_UP} className="lg:col-span-3">
+                <ContactForm />
+              </motion.div>
+
+              {/* Side info */}
+              <motion.div variants={FADE_UP} className="lg:col-span-2 space-y-6 pt-2">
+                {[
+                  { title: 'Appel de 30 minutes', desc: 'On analyse votre situation actuelle et on identifie les opportunités immédiates.' },
+                  { title: 'Stratégie sur mesure', desc: 'Vous repartez avec un plan d\'action concret, adapté à votre marché québécois.' },
+                  { title: 'Zéro engagement', desc: 'Pas de pression. Si on n\'est pas le bon fit, on vous le dira honnêtement.' },
+                ].map((item) => (
+                  <div key={item.title} className="flex gap-4">
+                    <CheckCircle2 className="text-primary w-6 h-6 mt-0.5 shrink-0" />
+                    <div>
+                      <div className="font-bold text-white mb-1">{item.title}</div>
+                      <div className="text-sm text-white/50 leading-relaxed">{item.desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function ContactForm() {
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState({ nom: '', entreprise: '', courriel: '', telephone: '', service: '', message: '' });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    await new Promise(r => setTimeout(r, 1200));
+    setLoading(false);
+    setSubmitted(true);
+  };
+
+  if (submitted) {
+    return (
+      <div className="bg-card border border-white/10 rounded-2xl p-10 text-center">
+        <CheckCircle2 className="text-primary w-16 h-16 mx-auto mb-6" />
+        <h3 className="text-2xl font-black text-white mb-3">Message envoyé !</h3>
+        <p className="text-white/60">Notre équipe vous contactera dans les prochaines 24 heures pour confirmer votre appel stratégique.</p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="bg-[#181818] border border-white/20 rounded-2xl p-8 space-y-5 shadow-[0_0_60px_rgba(200,146,42,0.08)]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div className="space-y-2">
+          <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">Votre nom *</label>
+          <input
+            name="nom" required value={form.nom} onChange={handleChange}
+            placeholder="Jean Tremblay"
+            className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors text-sm"
+          />
+        </div>
+        <div className="space-y-2">
+          <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">Entreprise *</label>
+          <input
+            name="entreprise" required value={form.entreprise} onChange={handleChange}
+            placeholder="Votre entreprise inc."
+            className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors text-sm"
+          />
+        </div>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div className="space-y-2">
+          <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">Courriel *</label>
+          <input
+            name="courriel" type="email" required value={form.courriel} onChange={handleChange}
+            placeholder="jean@entreprise.ca"
+            className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors text-sm"
+          />
+        </div>
+        <div className="space-y-2">
+          <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">Téléphone</label>
+          <input
+            name="telephone" type="tel" value={form.telephone} onChange={handleChange}
+            placeholder="514-000-0000"
+            className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors text-sm"
+          />
+        </div>
+      </div>
+      <div className="space-y-2">
+        <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">Service qui vous intéresse *</label>
+        <select
+          name="service" required value={form.service} onChange={handleChange}
+          className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors text-sm appearance-none"
+        >
+          <option value="" disabled className="text-white/30">Choisissez un service</option>
+          <option value="videos">Vidéos organiques</option>
+          <option value="pub">Campagnes publicitaires (Meta / Google / TikTok)</option>
+          <option value="reseaux">Gestion des réseaux sociaux</option>
+          <option value="contenu">Création de contenu</option>
+          <option value="strategie">Stratégie de marque</option>
+          <option value="tout">Tout — je veux une stratégie complète</option>
+        </select>
+      </div>
+      <div className="space-y-2">
+        <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">Parlez-nous de votre projet</label>
+        <textarea
+          name="message" value={form.message} onChange={handleChange} rows={4}
+          placeholder="Décrivez vos objectifs, votre budget approximatif, vos défis actuels..."
+          className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors text-sm resize-none"
+        />
+      </div>
+      <Button type="submit" size="lg" className="w-full uppercase tracking-widest text-sm h-14" disabled={loading}>
+        {loading ? 'Envoi en cours...' : 'Réserver mon appel gratuit →'}
+      </Button>
+    </form>
+  );
+}
+, label: 'coût / prospect', sub: 'coût moyen par prospect' },
+            ].map((item, i) => (
+              <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.2 }}
-                className="p-10 border border-white/10 bg-card rounded-2xl relative"
+                transition={{ delay: i * 0.15 }}
+                className="p-10 border border-white/10 bg-card rounded-2xl relative overflow-hidden group hover:border-primary/40 transition-colors"
               >
-                <div className="text-6xl text-primary/20 absolute top-6 left-6 font-serif">"</div>
-                <p className="text-lg md:text-xl text-white/80 leading-relaxed mb-8 relative z-10 font-light">
-                  {testimonial.quote}
-                </p>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center font-bold text-xl text-primary">
-                    {testimonial.author.charAt(0)}
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(200,146,42,0.06)_0%,transparent_70%)] group-hover:opacity-150 transition-opacity" />
+                <div className="relative z-10">
+                  <div className="text-6xl md:text-7xl font-black text-gradient-gold mb-2 leading-none">
+                    {item.stat}
                   </div>
-                  <div>
-                    <div className="font-bold">{testimonial.author}</div>
-                    <div className="text-sm text-white/50">{testimonial.role}</div>
-                  </div>
+                  <div className="text-xl font-bold text-white mb-1">{item.label}</div>
+                  <div className="text-sm text-white/50">{item.sub}</div>
                 </div>
               </motion.div>
             ))}
