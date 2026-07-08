@@ -27,7 +27,7 @@ export function Footer() {
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all text-white">
                 <Linkedin size={20} />
               </a>
-              <a href="mailto:info@mdsmarketing.ca" className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all text-white">
+              <a href="mailto:info@agmds.com" className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all text-white">
                 <Mail size={20} />
               </a>
             </div>
@@ -53,8 +53,13 @@ export function Footer() {
             <ul className="space-y-4 text-white/60">
               <li>Montréal, Québec</li>
               <li>
-                <a href="mailto:info@mdsmarketing.ca" className="hover:text-primary transition-colors">
-                  info@mdsmarketing.ca
+                <a href="tel:4183139250" className="hover:text-primary transition-colors">
+                  418 313-9250
+                </a>
+              </li>
+              <li>
+                <a href="mailto:info@agmds.com" className="hover:text-primary transition-colors">
+                  info@agmds.com
                 </a>
               </li>
               <li>

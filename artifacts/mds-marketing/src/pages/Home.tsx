@@ -346,7 +346,7 @@ function ContactForm() {
         </div>
         <div className="space-y-2">
           <label className="text-xs font-semibold text-white/60 uppercase tracking-wider">Téléphone</label>
-          <input name="telephone" type="tel" value={form.telephone} onChange={handleChange} placeholder="514-000-0000"
+          <input name="telephone" type="tel" value={form.telephone} onChange={handleChange} placeholder="418-000-0000"
             className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-primary transition-colors text-sm" />
         </div>
       </div>
