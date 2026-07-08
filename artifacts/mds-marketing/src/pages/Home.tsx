@@ -237,7 +237,7 @@ export default function Home() {
                     <div className="text-xs text-white/50">Moyenne clients MDS</div>
                   </div>
                 </div>
-                <div className="text-4xl font-display font-bold text-gradient-gold">+247%</div>
+                <div className="text-4xl font-display font-bold text-gradient-gold">+<Counter to={187} suffix="%" /></div>
               </motion.div>
             </motion.div>
           </motion.div>
