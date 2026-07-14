@@ -108,6 +108,40 @@ export default function Reserver() {
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
       />
 
+      {/* Floating gold bubbles — decorative, kept off to the sides so the form stays clean */}
+      <div className="hidden md:block absolute inset-0 pointer-events-none overflow-hidden">
+        <motion.div
+          className="absolute left-[4%] top-[18%] w-24 h-24 rounded-full bg-gradient-to-br from-[#F5C842]/25 to-[#C8922A]/10 blur-[2px]"
+          animate={{ y: [0, -22, 0], x: [0, 10, 0] }}
+          transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <motion.div
+          className="absolute left-[10%] top-[62%] w-12 h-12 rounded-full bg-gradient-to-br from-[#FFE066]/30 to-[#C8922A]/10 blur-[1px]"
+          animate={{ y: [0, 18, 0], x: [0, -8, 0] }}
+          transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 0.6 }}
+        />
+        <motion.div
+          className="absolute left-[2%] bottom-[10%] w-8 h-8 rounded-full bg-[#C8922A]/15"
+          animate={{ y: [0, -14, 0] }}
+          transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut', delay: 1.2 }}
+        />
+        <motion.div
+          className="absolute right-[5%] top-[14%] w-16 h-16 rounded-full bg-gradient-to-br from-[#C8922A]/20 to-[#F5C842]/10 blur-[1px]"
+          animate={{ y: [0, 16, 0], x: [0, -10, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 0.3 }}
+        />
+        <motion.div
+          className="absolute right-[9%] top-[55%] w-28 h-28 rounded-full bg-gradient-to-br from-[#F5C842]/20 to-[#C8922A]/8 blur-[2px]"
+          animate={{ y: [0, -20, 0], x: [0, 12, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 0.9 }}
+        />
+        <motion.div
+          className="absolute right-[3%] bottom-[14%] w-10 h-10 rounded-full bg-[#C8922A]/15"
+          animate={{ y: [0, 14, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
+        />
+      </div>
+
       {/* Header — logo + progress bar */}
       <div className="relative z-10 px-6 md:px-10 pt-6 md:pt-8">
         <div className="flex items-center justify-between mb-4">
