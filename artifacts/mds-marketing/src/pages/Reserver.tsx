@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowRight, ArrowLeft, CheckCircle2, Loader2 } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle2, Loader2, Users, ShieldCheck, Clock3, Star } from 'lucide-react';
 import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { useCreateLead } from '@workspace/api-client-react';
@@ -108,39 +108,42 @@ export default function Reserver() {
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
       />
 
-      {/* Floating gold bubbles — decorative, kept off to the sides so the form stays clean */}
-      <div className="hidden md:block absolute inset-0 pointer-events-none overflow-hidden">
-        <motion.div
-          className="absolute left-[4%] top-[18%] w-24 h-24 rounded-full bg-gradient-to-br from-[#F5C842]/25 to-[#C8922A]/10 blur-[2px]"
-          animate={{ y: [0, -22, 0], x: [0, 10, 0] }}
-          transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <motion.div
-          className="absolute left-[10%] top-[62%] w-12 h-12 rounded-full bg-gradient-to-br from-[#FFE066]/30 to-[#C8922A]/10 blur-[1px]"
-          animate={{ y: [0, 18, 0], x: [0, -8, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 0.6 }}
-        />
-        <motion.div
-          className="absolute left-[2%] bottom-[10%] w-8 h-8 rounded-full bg-[#C8922A]/15"
-          animate={{ y: [0, -14, 0] }}
-          transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut', delay: 1.2 }}
-        />
-        <motion.div
-          className="absolute right-[5%] top-[14%] w-16 h-16 rounded-full bg-gradient-to-br from-[#C8922A]/20 to-[#F5C842]/10 blur-[1px]"
-          animate={{ y: [0, 16, 0], x: [0, -10, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 0.3 }}
-        />
-        <motion.div
-          className="absolute right-[9%] top-[55%] w-28 h-28 rounded-full bg-gradient-to-br from-[#F5C842]/20 to-[#C8922A]/8 blur-[2px]"
-          animate={{ y: [0, -20, 0], x: [0, 12, 0] }}
-          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 0.9 }}
-        />
-        <motion.div
-          className="absolute right-[3%] bottom-[14%] w-10 h-10 rounded-full bg-[#C8922A]/15"
-          animate={{ y: [0, 14, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
-        />
-      </div>
+      {/* Trust/info bubbles — reassurance cues on the sides, fade in/out and drift; no fabricated stats */}
+      {step !== 'done' && (
+        <div className="hidden lg:block absolute inset-0 pointer-events-none overflow-hidden">
+          {[
+            { icon: Users, text: 'Accompagnement personnalisé', side: 'left' as const, top: '18%' },
+            { icon: ShieldCheck, text: 'Sans engagement', side: 'left' as const, top: '70%' },
+            { icon: Clock3, text: 'Réponse rapide', side: 'right' as const, top: '16%' },
+            { icon: Star, text: '100 % sur mesure', side: 'right' as const, top: '68%' },
+          ].map((bubble, i) => {
+            const Icon = bubble.icon;
+            return (
+              <motion.div
+                key={bubble.text}
+                className={`absolute ${bubble.side === 'left' ? 'left-[3%]' : 'right-[3%]'} flex items-center gap-2 rounded-2xl bg-white/85 backdrop-blur-sm border border-[#C8922A]/15 shadow-[0_4px_16px_rgba(0,0,0,0.05)] px-3.5 py-2`}
+                style={{ top: bubble.top }}
+                initial={{ opacity: 0 }}
+                animate={{
+                  opacity: [0, 1, 1, 0],
+                  y: [10, -6, 4, 10],
+                  x: bubble.side === 'left' ? [0, 6, -3, 0] : [0, -6, 3, 0],
+                }}
+                transition={{
+                  duration: 9 + i * 1.3,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                  delay: i * 1.8,
+                  times: [0, 0.15, 0.8, 1],
+                }}
+              >
+                <Icon className="w-3.5 h-3.5 text-[#C8922A] shrink-0" />
+                <span className="text-xs font-semibold text-black/60 whitespace-nowrap">{bubble.text}</span>
+              </motion.div>
+            );
+          })}
+        </div>
+      )}
 
       {/* Header — logo + progress bar */}
       <div className="relative z-10 px-6 md:px-10 pt-6 md:pt-8">
