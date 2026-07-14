@@ -209,6 +209,28 @@ export default function Reserver() {
         </div>
       )}
 
+      {/* Mobile: same rotating bubble, tucked into the thin strip at the bottom of the screen */}
+      {step !== 'done' && (
+        <div className="flex lg:hidden fixed bottom-3 left-0 right-0 justify-center pointer-events-none z-0 px-6">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={sideBubbles[0].text}
+              className="flex items-center gap-1.5 rounded-2xl bg-white/85 backdrop-blur-sm border border-[#C8922A]/15 shadow-[0_4px_16px_rgba(0,0,0,0.05)] px-3 py-1.5"
+              initial={{ opacity: 0, scale: 0.9, y: 6 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 6, transition: { duration: 0.4 } }}
+              transition={{ duration: 0.5 }}
+            >
+              {(() => {
+                const Icon = sideBubbles[0].icon;
+                return <Icon className="w-3 h-3 text-[#C8922A] shrink-0" />;
+              })()}
+              <span className="text-[11px] font-semibold text-black/60 whitespace-nowrap">{sideBubbles[0].text}</span>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      )}
+
       {/* Header — logo + progress bar */}
       <div className="relative z-10 px-6 md:px-10 pt-6 md:pt-8">
         <div className="flex items-center justify-between mb-4">
