@@ -116,6 +116,7 @@ export default function Reserver() {
   const [stepIdx, setStepIdx] = useState(0);
   const [direction, setDirection] = useState(1);
   const [form, setForm] = useState<FormData>({ nom: '', entreprise: '', service: '', courriel: '', telephone: '', message: '' });
+  const [fieldError, setFieldError] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
   const createLead = useCreateLead();
 
@@ -137,6 +138,7 @@ export default function Reserver() {
   const progress = step === 'done' ? 100 : ((answerableIdx + 1) / answerableSteps.length) * 100;
 
   const goTo = (targetIdx: number, dir: number) => {
+    setFieldError(null);
     setDirection(dir);
     setStepIdx(targetIdx);
   };
@@ -165,13 +167,26 @@ export default function Reserver() {
     );
   };
 
-  const handleTextEnter = (e: React.KeyboardEvent, canAdvance: boolean, isLast: boolean) => {
+  const handleTextEnter = (e: React.KeyboardEvent, canAdvance: boolean, isLast: boolean, errorMessage?: string) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      if (!canAdvance) return;
+      if (!canAdvance) {
+        if (errorMessage) setFieldError(errorMessage);
+        return;
+      }
+      setFieldError(null);
       if (isLast) submit();
       else goNext();
     }
+  };
+
+  const attemptNext = (canAdvance: boolean, errorMessage: string) => {
+    if (!canAdvance) {
+      setFieldError(errorMessage);
+      return;
+    }
+    setFieldError(null);
+    goNext();
   };
 
   const nomValid = form.nom.trim().length > 0;
@@ -386,13 +401,18 @@ export default function Reserver() {
                   ref={inputRef as React.RefObject<HTMLInputElement>}
                   type="email"
                   value={form.courriel}
-                  onChange={(e) => setForm(p => ({ ...p, courriel: e.target.value }))}
-                  onKeyDown={(e) => handleTextEnter(e, courrielValid, false)}
+                  onChange={(e) => { setForm(p => ({ ...p, courriel: e.target.value })); if (fieldError) setFieldError(null); }}
+                  onKeyDown={(e) => handleTextEnter(e, courrielValid, false, 'Ce courriel ne semble pas valide. Vérifiez-le et réessayez.')}
                   placeholder="Courriel"
                   className={INPUT_CLASS}
                 />
+                {fieldError && (
+                  <motion.p initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} className="text-sm text-red-500 mt-3">
+                    {fieldError}
+                  </motion.p>
+                )}
                 <div className="mt-8 flex items-center gap-4">
-                  <Button size="lg" disabled={!courrielValid} onClick={goNext} className="px-8 h-14 font-bold uppercase tracking-widest text-sm">
+                  <Button size="lg" onClick={() => attemptNext(courrielValid, 'Ce courriel ne semble pas valide. Vérifiez-le et réessayez.')} className="px-8 h-14 font-bold uppercase tracking-widest text-sm">
                     Suivant <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                   <span className="text-xs text-black/35">ou appuyez sur Entrée ↵</span>
@@ -408,13 +428,18 @@ export default function Reserver() {
                   ref={inputRef as React.RefObject<HTMLInputElement>}
                   type="tel"
                   value={form.telephone}
-                  onChange={(e) => setForm(p => ({ ...p, telephone: e.target.value }))}
-                  onKeyDown={(e) => handleTextEnter(e, telephoneValid, false)}
+                  onChange={(e) => { setForm(p => ({ ...p, telephone: e.target.value })); if (fieldError) setFieldError(null); }}
+                  onKeyDown={(e) => handleTextEnter(e, telephoneValid, false, 'Ce numéro ne semble pas être un numéro valide au Québec.')}
                   placeholder="Téléphone"
                   className={INPUT_CLASS}
                 />
+                {fieldError && (
+                  <motion.p initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} className="text-sm text-red-500 mt-3">
+                    {fieldError}
+                  </motion.p>
+                )}
                 <div className="mt-8 flex items-center gap-4">
-                  <Button size="lg" disabled={!telephoneValid} onClick={goNext} className="px-8 h-14 font-bold uppercase tracking-widest text-sm">
+                  <Button size="lg" onClick={() => attemptNext(telephoneValid, 'Ce numéro ne semble pas être un numéro valide au Québec.')} className="px-8 h-14 font-bold uppercase tracking-widest text-sm">
                     Suivant <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                   <span className="text-xs text-black/35">ou appuyez sur Entrée ↵</span>
