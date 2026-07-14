@@ -576,7 +576,7 @@ export default function Home() {
                     transition={{ duration: 3.5, repeat: Infinity, ease: 'linear' }}
                   />
                   <div className="relative rounded-[14px] overflow-hidden bg-white p-8 md:p-10 text-center">
-                    <p className="text-[10px] tracking-[0.25em] text-[#C8922A] font-bold uppercase mb-2">Appel gratuit — 15 minutes</p>
+                    <p className="text-[10px] tracking-[0.25em] text-[#C8922A] font-bold uppercase mb-2">Appel stratégique gratuit</p>
                     <h3 className="text-xl md:text-2xl font-black text-black leading-tight mb-6">
                       6 questions rapides. <span className="text-gradient-gold">On vous rappelle.</span>
                     </h3>

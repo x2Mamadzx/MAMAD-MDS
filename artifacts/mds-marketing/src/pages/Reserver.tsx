@@ -15,7 +15,7 @@ type FormData = {
   message: string;
 };
 
-type StepId = keyof FormData | 'intro' | 'done';
+type StepId = keyof FormData | 'done';
 
 const SERVICE_OPTIONS = [
   { value: 'videos', label: 'Vidéos organiques' },
@@ -26,7 +26,7 @@ const SERVICE_OPTIONS = [
   { value: 'tout', label: 'Tout — stratégie complète' },
 ];
 
-const STEP_ORDER: StepId[] = ['intro', 'nom', 'service', 'entreprise', 'courriel', 'telephone', 'message', 'done'];
+const STEP_ORDER: StepId[] = ['nom', 'service', 'entreprise', 'courriel', 'telephone', 'message', 'done'];
 
 /* ─── Motion variants for slide transitions ───────────────────── */
 const slideVariants = {
@@ -55,7 +55,7 @@ export default function Reserver() {
 
   const answerableSteps: StepId[] = ['nom', 'service', 'entreprise', 'courriel', 'telephone', 'message'];
   const answerableIdx = answerableSteps.indexOf(step);
-  const progress = step === 'intro' ? 0 : step === 'done' ? 100 : ((answerableIdx + 1) / answerableSteps.length) * 100;
+  const progress = step === 'done' ? 100 : ((answerableIdx + 1) / answerableSteps.length) * 100;
 
   const goTo = (targetIdx: number, dir: number) => {
     setDirection(dir);
@@ -114,45 +114,26 @@ export default function Reserver() {
           <Link href="/" className="text-sm font-black tracking-tight text-black">
             MDS <span className="text-gradient-gold">MARKETING</span>
           </Link>
-          {step !== 'intro' && step !== 'done' && (
-            <button onClick={goBack} className="flex items-center gap-1.5 text-xs text-black/40 hover:text-black/70 transition-colors">
+          {step !== 'done' && (
+            <button onClick={goBack} disabled={stepIdx === 0} className="flex items-center gap-1.5 text-xs text-black/40 hover:text-black/70 disabled:opacity-0 disabled:pointer-events-none transition-colors">
               <ArrowLeft className="w-3.5 h-3.5" /> Retour
             </button>
           )}
         </div>
-        {step !== 'intro' && (
-          <div className="h-1 w-full bg-black/8 rounded-full overflow-hidden">
-            <motion.div
-              className="h-full bg-gradient-to-r from-[#C8922A] to-[#F5C842]"
-              initial={{ width: 0 }}
-              animate={{ width: `${progress}%` }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            />
-          </div>
-        )}
+        <div className="h-1 w-full bg-black/8 rounded-full overflow-hidden">
+          <motion.div
+            className="h-full bg-gradient-to-r from-[#C8922A] to-[#F5C842]"
+            initial={{ width: 0 }}
+            animate={{ width: `${progress}%` }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          />
+        </div>
       </div>
 
       {/* Question stage */}
       <div className="relative z-10 flex-1 flex items-center justify-center px-6 md:px-10 py-10">
         <div className="w-full max-w-2xl">
           <AnimatePresence mode="wait" custom={direction}>
-
-            {step === 'intro' && (
-              <motion.div key="intro" custom={direction} variants={slideVariants} initial="enter" animate="center" exit="exit" className="text-center">
-                <span className="text-xs font-bold tracking-[0.3em] text-primary uppercase mb-5 block">Appel gratuit — 15 minutes</span>
-                <h1 className="text-4xl md:text-6xl font-black text-black leading-[0.95] mb-6">
-                  Réservez votre <span className="text-gradient-gold">appel stratégique.</span>
-                </h1>
-                <p className="text-base md:text-lg text-black/60 max-w-lg mx-auto mb-10">
-                  6 questions rapides. Deux minutes de votre temps. On vous rappelle avec un plan concret pour votre entreprise.
-                </p>
-                <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-block">
-                  <Button size="lg" onClick={goNext} className="px-12 h-16 text-base font-bold uppercase tracking-widest shadow-[0_0_40px_rgba(200,146,42,0.3)]">
-                    Commencer <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </motion.div>
-              </motion.div>
-            )}
 
             {step === 'nom' && (
               <motion.div key="nom" custom={direction} variants={slideVariants} initial="enter" animate="center" exit="exit">
