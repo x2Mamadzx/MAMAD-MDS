@@ -1,7 +1,6 @@
 {
   "framework": null,
-  "buildCommand": "pnpm --filter @workspace/mds-marketing run build && cp -r artifacts/mds-marketing/dist/. dist-vercel",
-  "outputDirectory": "dist-vercel",
+  "buildCommand": "pnpm --filter @workspace/mds-marketing run build && cp -r artifacts/mds-marketing/dist/. public",
   "functions": {
     "api/index.ts": {
       "maxDuration": 10
