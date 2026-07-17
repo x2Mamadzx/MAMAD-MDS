@@ -69,7 +69,6 @@ async function migrate() {
   const client = await pool.connect();
   try {
     await client.query(`
-      CREATE EXTENSION IF NOT EXISTS "pgcrypto";
       CREATE TABLE IF NOT EXISTS leads (
         id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
         nom TEXT NOT NULL,
