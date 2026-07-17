@@ -73,7 +73,7 @@ export default function Home() {
   return (
     <div className="w-full">
       {/* ── 1. HERO ─────────────────────────────────────────────── */}
-      <section ref={heroRef} className="relative min-h-[100dvh] flex items-center justify-center pt-28 md:pt-32 overflow-hidden">
+      <section ref={heroRef} className="relative min-h-[100dvh] flex items-start justify-center pt-28 md:pt-32 pb-16 overflow-hidden">
         <motion.div className="absolute inset-0 z-0" style={{ y: smoothY, scale: heroScale }}>
           <img src={heroImage} alt="Boardroom" className="w-full h-full object-cover opacity-35" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/70 to-background" />
@@ -90,17 +90,17 @@ export default function Home() {
             <div className="overflow-hidden mb-4">
               <motion.h1
                 variants={{ hidden: { y: '110%' }, visible: { y: 0, transition: { duration: 1, ease: [0.22, 1, 0.36, 1] } } }}
-                className="text-7xl md:text-9xl font-black leading-[0.88] text-black"
+                className="text-6xl md:text-8xl font-black leading-[0.88] text-black"
               >DOMINEZ</motion.h1>
             </div>
-            <div className="overflow-hidden mb-10">
+            <div className="overflow-hidden mb-8">
               <motion.h1
                 variants={{ hidden: { y: '110%' }, visible: { y: 0, transition: { duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] } } }}
-                className="text-7xl md:text-9xl font-black leading-[0.88] text-gradient-gold"
+                className="text-6xl md:text-8xl font-black leading-[0.88] text-gradient-gold"
               >VOTRE MARCHÉ.</motion.h1>
             </div>
 
-            <motion.p variants={FADE_UP} className="text-xl md:text-2xl text-black/55 font-light max-w-2xl mb-12 leading-relaxed">
+            <motion.p variants={FADE_UP} className="text-lg md:text-xl text-black/55 font-light max-w-2xl mb-8 leading-relaxed">
               Nous propulsons les entreprises ambitieuses. Stratégies implacables.
               Résultats mesurables. Un ROI qui fait la différence.
             </motion.p>

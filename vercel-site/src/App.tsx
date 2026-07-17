@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Switch, useLocation } from "wouter";
 import { Navbar } from "./components/layout/Navbar";
 import { Footer } from "./components/layout/Footer";
@@ -7,12 +7,19 @@ import Reserver from "./pages/Reserver";
 import Admin from "./pages/Admin";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 
+function ScrollToTop() {
+  const [location] = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [location]);
+  return null;
+}
+
 export default function App() {
   const [location] = useLocation();
   const hideLayout = location === "/reserver-appel";
 
   return (
     <div className="min-h-screen">
+      <ScrollToTop />
       {!hideLayout && <Navbar />}
       <Switch>
         <Route path="/" component={Home} />
